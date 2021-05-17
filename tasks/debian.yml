@@ -1,0 +1,8 @@
+---
+
+- name: Ensure docker.io is installed
+  ansible.builtin.apt:
+    name: docker.io
+  tags: docker
+
+...

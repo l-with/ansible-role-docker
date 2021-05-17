@@ -1,0 +1,9 @@
+---
+
+- name: dnf update cache
+  ansible.builtin.dnf:
+    update_cache: yes
+  changed_when: false
+  ignore_errors: yes
+
+...

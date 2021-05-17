@@ -1,0 +1,13 @@
+---
+
+galaxy_info:
+  role_name: docker
+  description: install docker
+  author: l-with
+  platforms:
+  - name: Ubuntu
+    versions: focal
+  - name: EL
+    versions: 8
+
+...
