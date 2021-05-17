@@ -2,6 +2,5 @@
 
 - name: Include os family specific install tasks
   include_tasks: "{{ ansible_os_family | lower }}.yml"
-  tags: docker
 
 ...
