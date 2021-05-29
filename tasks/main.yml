@@ -1,7 +1,7 @@
 ---
 
 - name: Ensure /etc/docker
-  ansbile.builtin.file:
+  ansible.builtin.file:
     path:  /etc/docker
     state: directory
     mode:  u=rw,g=r
