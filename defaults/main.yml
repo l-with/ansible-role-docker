@@ -1,0 +1,5 @@
+---
+
+docker_manipulate_iptables_rules: yes
+
+...

@@ -1,6 +1,14 @@
 ---
 
-- name: Include os family specific install tasks
-  include_tasks: "{{ ansible_os_family | lower }}.yml"
+- name: Ensure docker not manipulating iptables
+  ansible.builtin.template:
+    src:  daemon.json.j2
+    dest: /etc/docker/daemon.json
+    mode: u=rw,g=r
+  when: not docker_manipulate_iptables_rules
+
+- name: Ensure docker.io is installed
+  ansible.builtin.apt:
+    name: docker.io
 
 ...
