@@ -1,5 +1,12 @@
 ---
 
+- name: Ensure /etc/docker
+  ansbile.builtin.file:
+    path:  /etc/docker
+    state: directory
+    mode:  u=rw,g=r
+  when: not docker_manipulate_iptables_rules
+
 - name: Ensure docker not manipulating iptables
   ansible.builtin.template:
     src:  daemon.json.j2
