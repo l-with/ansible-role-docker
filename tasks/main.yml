@@ -14,8 +14,32 @@
     mode: u=rw,g=r
   when: not docker_manipulate_iptables_rules
 
-- name: Ensure docker.io is installed
+- name: Ensure /etc/apt/keyrings
+  ansible.builtin.file:
+    dest:  /etc/apt/keyrings
+    state: directory
+    mode:  u=rwx,g=rx,o=rx
+
+- name: Ensure Docker repository signing key
+  ansible.builtin.shell:
+    cmd:     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg    
+    creates: /etc/apt/keyrings/docker.gpg
+
+- name: Ensure Docker repository
+  ansible.builtin.shell:
+    cmd: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    creates: /etc/apt/sources.list.d/docker.list
+
+- name: Ensure apt cache update
   ansible.builtin.apt:
-    name: docker.io
+    update_cache: yes
+
+- name: Ensure install Docker Engine     
+  ansible.builtin.apt:
+    name: 
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io 
+      - docker-compose-plugin
 
 ...
