@@ -18,7 +18,7 @@
   ansible.builtin.file:
     dest:  /etc/apt/keyrings
     state: directory
-    mode:  u=rw,g=r,o=r
+    mode:  u=rwx,g=rx,o=rx
 
 - name: Ensure Docker repository signing key
   ansible.builtin.shell:
