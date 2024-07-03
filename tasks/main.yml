@@ -37,9 +37,20 @@
 - name: Ensure install Docker Engine     
   ansible.builtin.apt:
     name: 
-      - docker-ce 
-      - docker-ce-cli 
-      - containerd.io 
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
       - docker-compose-plugin
+
+- name: Ensure hold docker packages versions
+  ansible.builtin.dpkg_selections:
+    name: "{{ item }}"
+    selection: hold
+  loop: 
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose-plugin
+  when: docker_hold_package_version
 
 ...

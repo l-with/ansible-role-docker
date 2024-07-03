@@ -1,5 +1,6 @@
 ---
 
-docker_manipulate_iptables_rules: yes
+docker_manipulate_iptables_rules: true
+docker_hold_package_version:      false
 
 ...
