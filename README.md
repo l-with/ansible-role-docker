@@ -14,5 +14,5 @@ if docker can manipulate iptable rules
 | group | variable | default | description |
 | --- | --- | ---| --- |
 | install | docker_manipulate_iptables_rules | `true` | if docker can manipulate iptable rules |
-| install | docker_hold_package_version | `false` | if the package version of docker should be hold to prevent updates |
+| install | docker_hold_packages_versions | `false` | if the packages versions of docker should be hold to prevent updates |
 <!-- markdownlint-enable MD033 -->

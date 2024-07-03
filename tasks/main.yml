@@ -51,6 +51,6 @@
     - docker-ce-cli
     - containerd.io
     - docker-compose-plugin
-  when: docker_hold_package_version
+  when: docker_hold_packages_versions
 
 ...
