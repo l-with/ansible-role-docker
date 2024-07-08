@@ -1,6 +1,8 @@
 ---
 
+docker_install:                   true
 docker_manipulate_iptables_rules: true
 docker_hold_packages_versions:    false
+docker_unhold_packages_versions:  false
 
 ...
