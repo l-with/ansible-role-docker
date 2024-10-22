@@ -13,8 +13,8 @@
     - docker-ce-cli
     - containerd.io
     - docker-compose-plugin
-  when:       docker_hold_packages_versions
-  check_mode: false
+  when:          docker_hold_packages_versions
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Ensure unhold docker packages versions (install)
   ansible.builtin.dpkg_selections:
@@ -25,7 +25,7 @@
     - docker-ce-cli
     - containerd.io
     - docker-compose-plugin
-  when:        docker_unhold_packages_versions
-  check_mode: false
+  when:          docker_unhold_packages_versions
+  ignore_errors: "{{ ansible_check_mode }}"
 
 ...
