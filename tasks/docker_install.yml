@@ -16,23 +16,27 @@
 
 - name: Ensure /etc/apt/keyrings
   ansible.builtin.file:
-    dest:  /etc/apt/keyrings
-    state: directory
-    mode:  u=rwx,g=rx,o=rx
+    dest:       /etc/apt/keyrings
+    state:      directory
+    mode:       u=rwx,g=rx,o=rx
+    check_mode: false
 
 - name: Ensure Docker repository signing key
   ansible.builtin.shell:
-    cmd:     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg    
-    creates: /etc/apt/keyrings/docker.gpg
+    cmd:        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg    
+    creates:    /etc/apt/keyrings/docker.gpg
+    check_mode: false
 
 - name: Ensure Docker repository
   ansible.builtin.shell:
-    cmd: echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-    creates: /etc/apt/sources.list.d/docker.list
+    cmd:        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+    creates:    /etc/apt/sources.list.d/docker.list
+    check_mode: false
 
 - name: Ensure apt cache update
   ansible.builtin.apt:
     update_cache: yes
+    check_mode:   false
 
 - name: Ensure install Docker Engine     
   ansible.builtin.apt:
