@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure vault docker install
+- name: Ensure docker install
   ansible.builtin.include_tasks: docker_install.yml
   when: docker_install
 
