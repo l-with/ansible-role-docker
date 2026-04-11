@@ -36,7 +36,7 @@
 - name: Ensure apt cache update
   ansible.builtin.apt:
     update_cache: yes
-  check_mode: false
+  changed_when: false
 
 - name: Ensure install Docker Engine     
   ansible.builtin.apt:
