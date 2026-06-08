@@ -35,12 +35,12 @@
 
 - name: Ensure apt cache update
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
   changed_when: false
 
-- name: Ensure install Docker Engine     
+- name: Ensure install Docker Engine
   ansible.builtin.apt:
-    name: 
+    name:
       - docker-ce
       - docker-ce-cli
       - containerd.io

@@ -1,0 +1,12 @@
+---
+
+exclude_paths:
+    - .yamllint
+
+skip_list:
+    - name[template]
+    - yaml[colons]
+    - command-instead-of-shell
+    - command-instead-of-module
+
+...

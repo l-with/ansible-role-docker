@@ -8,7 +8,7 @@
   ansible.builtin.dpkg_selections:
     name: "{{ item }}"
     selection: hold
-  loop: 
+  loop:
     - docker-ce
     - docker-ce-cli
     - containerd.io
@@ -20,7 +20,7 @@
   ansible.builtin.dpkg_selections:
     name: "{{ item }}"
     selection: install
-  loop: 
+  loop:
     - docker-ce
     - docker-ce-cli
     - containerd.io
